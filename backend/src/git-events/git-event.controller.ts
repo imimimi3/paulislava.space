@@ -8,14 +8,14 @@ export class GitEventController {
   async gitEventHandle(
     @Headers('X-GitHub-Event') event: string,
     @Headers('X-Hub-Signature-256') signature: string,
-    @Body() data: any,
+    @Body() data: string,
   ): Promise<void> {
     console.log(`Github event: ${event}`);
 
     const secret = 'MyGitHubTokenForPaul1sLava_SPACE';
-    console.log(data.toString())
+    console.log(data)
     const mySignature = createHmac('sha256', secret)
-      .update(data.toString())
+      .update(data)
       .digest('hex');
 
     console.log(`Signature: ${signature}`);
