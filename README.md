@@ -1,1 +1,1 @@
-# paulislava.space
+# paulislava.space - is a blog about thos development
