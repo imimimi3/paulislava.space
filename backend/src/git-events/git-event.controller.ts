@@ -1,6 +1,6 @@
 import { Body, Controller, Headers, Post } from '@nestjs/common';
 import { exec } from 'child_process';
-import { createHash } from 'crypto';
+import { createHmac } from 'crypto';
 
 @Controller('git-event')
 export class GitEventController {
@@ -13,9 +13,7 @@ export class GitEventController {
     console.log(`Github event: ${event}`);
 
     const secret = 'MyGitHubTokenForPaul1sLava_SPACE';
-    const mySignature = createHash('sha256')
-      .update(secret + data)
-      .digest('hex');
+    const mySignature = createHmac('sha256', secret).update(data).digest('hex');
     console.log(`Signature: ${signature}`);
     console.log(`My signature: ${mySignature}`);
     console.log(data);
