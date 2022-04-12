@@ -14,9 +14,9 @@ export class GitEventController {
 
     const secret = 'MyGitHubTokenForPaul1sLava_SPACE';
     const mySignature = createHmac('sha256', secret)
-      .update(String(data))
+      .update(secret + String(data))
       .digest('hex');
-      
+
     console.log(`Signature: ${signature}`);
     console.log(`My signature: ${mySignature}`);
     console.log(data);
