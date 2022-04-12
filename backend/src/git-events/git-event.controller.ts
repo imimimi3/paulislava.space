@@ -1,7 +1,6 @@
 import { Body, Controller, Headers, Post, Request } from '@nestjs/common';
 import { exec } from 'child_process';
 import { createHmac } from 'crypto';
-import { Request } from 'express';
 
 @Controller('git-event')
 export class GitEventController {
