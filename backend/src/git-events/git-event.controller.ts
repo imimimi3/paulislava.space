@@ -5,6 +5,11 @@ import { createHash } from 'crypto';
 @Controller('git-event')
 export class GitEventController {
   @Post()
+  async gitEventHeaders(@Headers() headers,  @Body() data: string) {
+    console.log(headers);
+    console.log(data);
+  }
+  
   async gitEventHandle(
     @Headers('X-GitHub-Event') event: string,
     @Headers('X-Hub-Signature-256') signature: string,
