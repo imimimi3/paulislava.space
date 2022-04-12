@@ -13,13 +13,13 @@ export class GitEventController {
     console.log(`Github event: ${event}`);
 
     const secret = 'MyGitHubTokenForPaul1sLava_SPACE';
+    console.log(String(data))
     const mySignature = createHmac('sha256', secret)
-      .update(secret + String(data))
+      .update(String(data))
       .digest('hex');
 
     console.log(`Signature: ${signature}`);
     console.log(`My signature: ${mySignature}`);
-    console.log(data);
 
     if (event == 'push') {
       await exec('git pull');
