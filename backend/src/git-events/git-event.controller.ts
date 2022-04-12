@@ -18,6 +18,7 @@ export class GitEventController {
       .digest('hex');
     console.log(`Signature: ${signature}`);
     console.log(`My signature: ${mySignature}`);
+    console.log(data);
 
     if (event == 'push') {
       await exec('git pull');
