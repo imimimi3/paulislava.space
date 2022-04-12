@@ -1,1 +1,1 @@
-# paulislava.space - is a blog about thos development
+# paulislava.space - is a blog about thos development. Repository is open for changes
