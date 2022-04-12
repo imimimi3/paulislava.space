@@ -12,7 +12,6 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('git-event')
   @Post('git-event')
   gitEvent(): void {
     console.log('git-event');
