@@ -1,6 +1,7 @@
-import { Controller, Headers, Post, Request } from '@nestjs/common'
+import { Body, Controller, Headers, Post, Req, Request } from '@nestjs/common'
 import { exec } from 'child_process'
 import { createHmac } from 'crypto'
+import * as rawbody from 'raw-body'
 
 @Controller('git-event')
 export class GitEventController {
@@ -8,11 +9,16 @@ export class GitEventController {
   async gitEventHandle(
     @Headers('X-GitHub-Event') event: string,
     @Headers('X-Hub-Signature') signature: string,
-    @Request() req: Request
+    @Req() req
   ): Promise<void> {
     console.log(`Github event: ${event}`)
-    const data = String(req.body)
+
+    const raw = await rawbody(req)
     const secret = process.env.GITHUB_HOOK_SECRET
+    const data = raw.toString()
+    console.log('Data:', data)
+    console.log('Secret: ', secret)
+
     const mySignature = createHmac('sha1', secret).update(data).digest('hex')
 
     console.log(`Signature: ${signature}`)
