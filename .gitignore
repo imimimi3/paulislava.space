@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+.vscode
+.env
+*/data
+.cache
+*.iml
+*.styl.d.ts
+node_modules
+dist
+build
+temp
+coverage
+uploads
+external_api_keys.json
+npm-debug.log
+.temp_cache

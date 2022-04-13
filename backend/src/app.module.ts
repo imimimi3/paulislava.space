@@ -1,11 +1,16 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { GitEventController } from './git-events/git-event.controller';
+import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { GitEventController } from './git-events/git-event.controller'
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env'
+    })
+  ],
   controllers: [AppController, GitEventController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}
