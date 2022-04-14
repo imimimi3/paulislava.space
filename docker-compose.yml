@@ -37,9 +37,20 @@ services:
       - ./frontend:/var/www/frontend
     ports:
       - ${FRONTEND_PORT:-3000}:3000
+    depends_on:
+      - database
     environment:
       HOME: '/tmp'
     env_file:
       - ./frontend/.env
-    restart: always
+    restart: unless-stopped
     user: ${UID}
+
+  pg-admin:
+    image: dpage/pgadmin4
+    ports:
+      - 5050:80
+    depends_on:
+      - database
+    env_file:
+      - ./pg-admin/.env
