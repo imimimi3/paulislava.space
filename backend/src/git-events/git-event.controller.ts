@@ -11,6 +11,7 @@ export class GitEventController {
     @Headers('X-Hub-Signature-256') signature: string,
     @RawBody() data: string
   ): Promise<void> {
+    console.info(`Git event: ${event}`)
     const secret = process.env.GITHUB_HOOK_SECRET
     const mySignature = 'sha256=' + createHmac('sha256', secret).update(data).digest('hex')
 
