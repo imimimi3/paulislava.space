@@ -4,7 +4,7 @@ services:
   database:
     image: postgres:10-alpine
     ports:
-      - 5432:5432
+      - ${DATABASE_PORT:-5432}:5432
     env_file:
       - ./database/.env
     restart: unless-stopped
@@ -18,8 +18,8 @@ services:
       - ./shared:/var/www/shared
       - ./backend:/var/www/backend
     ports:
-      - 4000:4000
-      - 9229:9229
+      - ${BACKEND_PORT:-4000}:4000
+      - ${BACKEND_DEBUG_PORT:-9229}:9229
     env_file:
       - ./backend/.env
     environment:
@@ -36,7 +36,7 @@ services:
       - ./shared:/var/www/shared
       - ./frontend:/var/www/frontend
     ports:
-      - 3000:3000
+      - ${FRONTEND_PORT:-3000}:3000
     environment:
       HOME: '/tmp'
     env_file:

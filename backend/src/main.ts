@@ -24,6 +24,6 @@ async function bootstrap() {
 
   app.use(bodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }))
   app.use(bodyParser.json({ verify: rawBodyBuffer }))
-  await app.listen(process.env.BACKEND_PORT)
+  await app.listen(3000)
 }
 bootstrap()
