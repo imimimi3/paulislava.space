@@ -1,0 +1,4 @@
+**/.env
+**/*.styl.d.ts
+**/node_modules
+database
