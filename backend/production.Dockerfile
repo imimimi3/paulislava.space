@@ -44,6 +44,7 @@ COPY backend/package.json backend/package-lock.json /var/www/backend/
 COPY --from=cleanup /var/www/backend/node_modules /var/www/backend/node_modules
 COPY --from=cleanup /var/www/backend/build /var/www/backend/
 COPY backend/docker-entrypoint-production.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 COPY shared/package.json shared/package-lock.json /var/www/shared/
 COPY --from=cleanup /var/www/shared/node_modules /var/www/shared/node_modules

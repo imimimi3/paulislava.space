@@ -22,6 +22,7 @@ ENV NODE_ENV production
 ENV WITH_DMS true
 
 COPY frontend/docker-entrypoint-build.sh /
+RUN chmod +x /docker-entrypoint.sh
 COPY frontend/.stylintrc \
      frontend/.eslintrc.json \
      frontend/tsconfig.json \
