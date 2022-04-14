@@ -41,5 +41,5 @@ services:
       HOME: '/tmp'
     env_file:
       - ./frontend/.env
-    restart: unless-stopped
+    restart: always
     user: ${UID}

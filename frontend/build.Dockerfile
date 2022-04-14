@@ -4,8 +4,8 @@ RUN apk add --no-cache jq
 
 COPY .prettierrc.json .prettierignore tsconfig-base.json /var/lib/
 
-COPY bim-shared /var/lib/bim-shared
-WORKDIR /var/lib/bim-shared
+COPY shared /var/lib/shared
+WORKDIR /var/lib/shared
 ENV NODE_OPTIONS=--max_old_space_size=4096
 RUN npm install
 RUN npm run lint
