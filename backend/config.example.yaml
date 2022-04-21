@@ -1,0 +1,9 @@
+database:
+  host: database
+  port: 5432              # Optional
+  username: postgres      # Optional
+  password: postgres
+  database: postgres      # Optional
+
+github:
+  hookSecret: Such secret

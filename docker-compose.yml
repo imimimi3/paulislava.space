@@ -4,10 +4,12 @@ services:
   database:
     image: postgres:10-alpine
     ports:
-      - ${DATABASE_PORT:-5432}:5432
-    env_file:
-      - ./database/.env
+      - ${POSTGRES_PORT:-5432}:5432
     restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-postgres}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
 
   backend:
     build: ./backend
@@ -20,8 +22,6 @@ services:
     ports:
       - ${BACKEND_PORT:-4000}:4000
       - ${BACKEND_DEBUG_PORT:-9229}:9229
-    env_file:
-      - ./backend/.env
     environment:
       HOME: '/tmp'
     restart: unless-stopped
@@ -41,16 +41,14 @@ services:
       - database
     environment:
       HOME: '/tmp'
-    env_file:
-      - ./frontend/.env
     restart: unless-stopped
     user: ${UID}
 
   pg-admin:
     image: dpage/pgadmin4
     ports:
-      - ${PG_ADMIN_PORT:-5050}:80
+      - ${PGADMIN_PORT:-5050}:80
+    env_file:
+      - '.env'
     depends_on:
       - database
-    env_file:
-      - ./pg-admin/.env

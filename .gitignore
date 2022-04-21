@@ -15,3 +15,6 @@ uploads
 external_api_keys.json
 npm-debug.log
 .temp_cache
+*.tsbuildinfo
+tsconfig.build.tsbuildinfo
+config.yaml
