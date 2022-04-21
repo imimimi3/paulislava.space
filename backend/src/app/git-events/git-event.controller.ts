@@ -31,7 +31,7 @@ export class GitEventController {
 
         if (event == 'push') {
             this.gitEventService.handlePushEvent(data)
-            await exec('cd /var/www/ && git pull origin main', (error, stdout, stderr) => {
+            await exec('cd /var/www/ && git pull origin master', (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error: ${error.message}`)
                 }
